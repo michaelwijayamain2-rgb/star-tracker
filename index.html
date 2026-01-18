@@ -299,6 +299,7 @@
         async function init() {
             const { data } = await supabaseClient.from('star_tracker').select('db_content').eq('id', 1).single();
             if (data) db = data.db_content;
+            checkMonthlyReset();
             setupIconPicker();
             updateKidDropdown();
             render('chores');
@@ -331,15 +332,6 @@
                 db.lastOpenedMonth = currentMonth;
                 save();
             }
-        }
-
-        function init() {
-            const saved = localStorage.getItem('familyStarIcons');
-            if (saved) db = JSON.parse(saved);
-            checkMonthlyReset();
-            setupIconPicker();
-            updateKidDropdown();
-            render('chores');
         }
 
         function setupIconPicker() {
@@ -558,3 +550,4 @@
     </script>
 </body>
 </html>
+
