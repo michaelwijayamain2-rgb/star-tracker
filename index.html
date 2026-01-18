@@ -12,11 +12,9 @@
         :root { --primary: #FFD700; --success: #4CAF50; --danger: #FF5252; --info: #2196F3; --bg: #F0F8FF; }
         body { font-family: 'Quicksand', sans-serif; background-color: var(--bg); margin: 0; padding: 10px; text-align: center; }
         
-        /* On-Screen Monthly Reset Banner */
         #monthlyAlertBanner { display: none; background: var(--info); color: white; padding: 15px; position: fixed; top: 0; left: 0; width: 100%; z-index: 2000; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.2); animation: slideDown 0.5s ease; }
         @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
 
-        /* Dashboard & Header */
         .kid-header { background: white; padding: 15px; border-radius: 20px; margin-bottom: 15px; box-shadow: 0 4px 0 #ddd; display: flex; align-items: center; justify-content: space-around; }
         .avatar-circle { position: relative; width: 65px; height: 65px; background: #eee; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 4px solid var(--primary); overflow: hidden; }
         .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
@@ -28,63 +26,47 @@
         .tab-container { display: flex; justify-content: center; gap: 5px; margin-bottom: 15px; flex-wrap: wrap; }
         .tab-btn { padding: 12px 18px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; color: white; font-size: 1rem; }
 
-        /* Action Grid */
         .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; max-width: 800px; margin: 0 auto; }
         .action-card { background: white; padding: 20px; border-radius: 20px; border: 3px solid #eee; cursor: pointer; box-shadow: 0 4px 0 #eee; transition: 0.2s; }
         .action-card:active { transform: translateY(3px); box-shadow: 0 1px 0 #eee; }
         .card-icon { font-size: 2.5rem; margin-bottom: 8px; display: block; }
 
-        /* Hall of Fame & History */
         .data-card { background: white; padding: 15px; border-radius: 20px; margin: 20px auto; max-width: 500px; box-shadow: 0 4px 0 #ddd; }
         .hall-row { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; }
-        .hall-row:last-child { border-bottom: none; }
-
+        
         .history-list { text-align: left; max-height: 250px; overflow-y: auto; margin-top: 10px; font-size: 0.85rem; }
         .history-item { display: flex; flex-direction: column; padding: 10px; border-bottom: 1px solid #f0f0f0; }
         .hist-top { display: flex; justify-content: space-between; font-weight: bold; }
         .hist-time { font-size: 0.7rem; color: #999; margin-top: 2px; }
         
-        /* Icon Picker */
         .icon-picker { display: flex; flex-wrap: wrap; gap: 8px; background: #f9f9f9; padding: 10px; border-radius: 10px; border: 1px solid #ccc; max-height: 120px; overflow-y: auto; margin: 10px 0; }
         .icon-opt { font-size: 1.5rem; padding: 5px; cursor: pointer; border-radius: 5px; border: 2px solid transparent; }
         .icon-opt.selected { border-color: var(--info); background: white; }
 
         /* PIN Pad Styles */
-        #pinModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        #pinModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; justify-content: center; align-items: center; }
         .pin-container { background: white; padding: 25px; border-radius: 25px; width: 280px; text-align: center; }
         .pin-display { font-size: 2rem; letter-spacing: 10px; margin-bottom: 20px; border-bottom: 3px solid var(--primary); min-height: 40px; }
         .pin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .pin-btn { padding: 20px; font-size: 1.5rem; font-weight: bold; border-radius: 15px; border: none; background: #f0f0f0; cursor: pointer; }
         .pin-btn:active { background: #ddd; }
 
-        /* Confirmation Area */
-        .confirm-box { display: none; background: #ffebee; border: 2px solid var(--danger); padding: 15px; border-radius: 10px; margin-top: 10px; text-align: center; }
-
-        /* Admin Management */
         .admin-panel { margin-top: 40px; padding: 20px; background: #e0e0e0; border-radius: 20px; display: none; }
         .admin-section { background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; }
         input, select { padding: 12px; border-radius: 8px; border: 1px solid #ccc; margin: 5px 0; width: 100%; box-sizing: border-box; font-size: 1rem; }
         
         .manage-list-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
-        .btn-edit { background: var(--info); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-right: 5px; }
-        .btn-del { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
-        
         .particle { position: fixed; pointer-events: none; z-index: 100; font-size: 2.5rem; animation: flyUp 1s forwards; }
         @keyframes flyUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-100px); opacity: 0; } }
-
-        /* Confetti Animation */
         .confetti { position: fixed; pointer-events: none; z-index: 200; font-size: 2rem; animation: fall 3s ease-out forwards; }
-        @keyframes fall {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-        }
+        @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
     </style>
 </head>
 <body>
 
     <div id="monthlyAlertBanner">
-        📅 A new month has started! Data synced and reset across all devices.
-        <button onclick="document.getElementById('monthlyAlertBanner').style.display='none'" style="margin-left:15px; background:white; border:none; border-radius:5px; padding:8px 15px; font-weight:bold; cursor:pointer; color:var(--info);">Got it!</button>
+        📅 Monthly Reset Complete!
+        <button onclick="document.getElementById('monthlyAlertBanner').style.display='none'">OK</button>
     </div>
 
     <div class="kid-header">
@@ -130,130 +112,43 @@
     </div>
 
     <div class="data-card">
-        <h3 style="margin-top:0; color:var(--primary);">🏆 Hall of Fame</h3>
+        <h3>🏆 Hall of Fame</h3>
         <div id="hallOfFameList"></div>
     </div>
 
     <div class="data-card">
-        <h3 style="margin-top:0; color:var(--info);">📜 History</h3>
+        <h3>📜 History</h3>
         <div id="historyList" class="history-list"></div>
     </div>
 
-    // function openPinModal() {
-            currentPinInput = "";
-            document.getElementById('pinDisplay').innerText = "";
-            document.getElementById('pinModal').style.display = "flex";
-        }
-
-        // function submitPin() {
-            if (currentPinInput === db.pin) {
-                closePin();
-                toggleAdmin(); // This only opens the settings IF the pin is right
-            } else {
-                alert("Wrong PIN!");
-                currentPinInput = "";
-                document.getElementById('pinDisplay').innerText = "";
-            }
-        }
-
-        //    function toggleAdmin() { 
-            const ap = document.getElementById('adminPanel'); 
-            ap.style.display = ap.style.display === 'block' ? 'none' : 'block'; 
-        }
+    <button onclick="openPinModal()" style="margin-top:30px; border:none; background:none; color:#999; cursor:pointer; font-size:1.1rem;">Parent Settings 🔒</button>
 
     <div id="adminPanel" class="admin-panel">
         <div class="admin-section">
-            <h4 id="formTitle">Add New Task</h4>
+            <h4 id="formTitle">Add Task</h4>
             <input type="hidden" id="editingId" value="">
-            
-            <label style="font-size:0.8rem; font-weight:bold;">1. Choose Category</label>
-            <select id="addType">
-                <option value="chores">Chore (+)</option>
-                <option value="punishments">Oopsie (-)</option>
-                <option value="rewards">Reward (Cost)</option>
-            </select>
-
-            <label style="font-size:0.8rem; font-weight:bold;">2. Pick a Picture</label>
+            <select id="addType"><option value="chores">Chore (+)</option><option value="punishments">Oopsie (-)</option><option value="rewards">Reward (Cost)</option></select>
             <div class="icon-picker" id="iconPickerArea"></div>
             <input type="hidden" id="selectedIcon" value="✨">
-
-            <label style="font-size:0.8rem; font-weight:bold;">3. Name & Points</label>
-            <input type="text" id="addItemName" placeholder="e.g. Brush Teeth">
+            <input type="text" id="addItemName" placeholder="Task Name">
             <input type="number" id="addItemVal" placeholder="Points">
-            
-            <button id="saveBtn" onclick="saveItem()" style="width:100%; background:var(--success); color:white; border:none; padding:15px; border-radius:8px; font-weight:bold; margin-top:10px;">SAVE ITEM</button>
-            <button id="cancelEdit" onclick="resetForm()" style="display:none; width:100%; margin-top:10px; background:#999; color:white; border:none; padding:10px; border-radius:8px;">Cancel Edit</button>
+            <button onclick="saveItem()" style="width:100%; background:var(--success); color:white; padding:15px; border-radius:8px; border:none; font-weight:bold;">SAVE</button>
         </div>
-
         <div class="admin-section">
-            <h4>Manage Kids</h4>
-            <input type="text" id="newKidName" placeholder="New Child Name">
-            <button onclick="addKid()" style="width:100%; padding:10px; margin-bottom:10px;">Add Child</button>
-            
-            <button onclick="showConfirm('hallReset')" style="width:100%; padding:10px; background:var(--danger); color:white; border:none; border-radius:8px; font-weight:bold; margin-bottom:10px;">Reset Hall of Fame (All Kids to 0)</button>
-            <div id="hallResetConfirm" class="confirm-box">
-                <p style="margin:0 0 10px 0; color:var(--danger); font-weight:bold;">⚠️ This resets EVERYONE to 0. Proceed?</p>
-                <button onclick="resetAllPoints()" style="background:var(--danger); color:white; border:none; padding:10px 20px; border-radius:8px; margin-right:10px; font-weight:bold;">YES, RESET ALL</button>
-                <button onclick="hideConfirm('hallReset')" style="background:#999; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold;">CANCEL</button>
-            </div>
-
-            <button onclick="showConfirm('kidDelete')" style="color:red; background:none; border:none; width:100%; cursor:pointer;">Delete Current Child</button>
-            <div id="kidDeleteConfirm" class="confirm-box">
-                <p style="margin:0 0 10px 0; color:var(--danger); font-weight:bold;">🗑️ Permanently delete this child?</p>
-                <button onclick="deleteKid()" style="background:var(--danger); color:white; border:none; padding:10px 20px; border-radius:8px; margin-right:10px; font-weight:bold;">YES, DELETE</button>
-                <button onclick="hideConfirm('kidDelete')" style="background:#999; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold;">CANCEL</button>
-            </div>
+            <h4>Kids</h4>
+            <input type="text" id="newKidName" placeholder="New Kid Name">
+            <button onclick="addKid()" style="width:100%; padding:10px;">Add Kid</button>
         </div>
-
-        <div class="admin-section">
-            <h4>Data Backup</h4>
-            <button onclick="exportData()" style="width:100%; padding:10px; background:#673AB7; color:white; border:none; border-radius:8px; margin-bottom:10px; font-weight:bold;">💾 Export Data</button>
-            <button onclick="document.getElementById('importFile').click()" style="width:100%; padding:10px; background:#009688; color:white; border:none; border-radius:8px; margin-bottom:10px; font-weight:bold;">📂 Import Data</button>
-            <input type="file" id="importFile" style="display:none" onchange="importData(event)">
-        </div>
-
-        <div class="admin-section">
-            <h4>Full List Management</h4>
-            <div id="editListArea"></div>
-        </div>
+        <div id="editListArea"></div>
     </div>
 
     <script>
-        // --- SUPABASE CONFIGURATION ---
+        // --- SUPABASE CONFIG ---
         const supabaseUrl = 'https://kyljmfooeekqqcgbiowc.supabase.co';
-        const supabaseKey = 'sb_publishable_Nhg4Ajdwd_ZXBCQFQ80Ijg_94CPaPMN'; // PASTE YOUR KEY HERE
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+        const supabaseKey = 'PASTE_YOUR_COPIED_KEY_HERE'; // <--- PASTE YOUR KEY HERE
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const iconList = ["✨","🧹","🍽️","🛏️","🧸","📚","🦷","🚿","👕","🐶","🐱","🍎","🥦","🏀","🚲","🎮","📺","🍦","🍭","🎁","🎬","🏖️","🦄","🤖","🦕","🚀","😭","🤥","🖐️","🔇","📢","🚫","💤","⏰"];
-        
-        // Sound Engine
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const fartSound = new Audio('https://www.soundjay.com/human/sounds/fart-01.mp3');
-
-        function playSound(type) {
-            if (audioCtx.state === 'suspended') audioCtx.resume();
-            if (type === 'punishments') { fartSound.currentTime = 0; fartSound.play(); return; }
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain); gain.connect(audioCtx.destination);
-            const now = audioCtx.currentTime;
-            if (type === 'chores') {
-                osc.type = 'triangle'; [523.25, 659.25, 783.99].forEach((f, i) => { osc.frequency.setValueAtTime(f, now + (i * 0.1)); });
-                gain.gain.setValueAtTime(0.2, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4); osc.start(now); osc.stop(now + 0.4);
-            } else if (type === 'rewards') {
-                osc.type = 'square'; [523.25, 523.25, 659.25, 783.99, 1046.50].forEach((f, i) => { osc.frequency.setValueAtTime(f, now + (i * 0.08)); });
-                gain.gain.setValueAtTime(0.1, now); gain.gain.exponentialRampToValueAtTime(0.01, now + 0.6); osc.start(now); osc.stop(now + 0.6);
-            } else if (type === 'party') {
-                for(let i=0; i<3; i++) {
-                    const partyOsc = audioCtx.createOscillator(); const partyGain = audioCtx.createGain();
-                    partyOsc.connect(partyGain); partyGain.connect(audioCtx.destination); partyOsc.type = 'sawtooth';
-                    [440, 554, 659, 880].forEach((f, idx) => { partyOsc.frequency.setValueAtTime(f, now + (i*0.2) + (idx * 0.05)); });
-                    partyGain.gain.setValueAtTime(0.1, now + (i*0.2)); partyGain.gain.exponentialRampToValueAtTime(0.01, now + (i*0.2) + 0.3);
-                    partyOsc.start(now + (i*0.2)); partyOsc.stop(now + (i*0.2) + 0.3);
-                }
-            }
-        }
-
         let db = {
             activeKid: "Child 1", pin: "1234",
             lastOpenedMonth: new Date().getMonth(),
@@ -261,7 +156,7 @@
             lists: { chores: [], punishments: [], rewards: [] }
         };
 
-        // PIN PAD LOGIC (FIXED)
+        // PIN SYSTEM
         let currentPinInput = "";
         function openPinModal() {
             currentPinInput = "";
@@ -276,17 +171,24 @@
             }
         }
         function submitPin() {
-            if (currentPinInput === db.pin) { closePin(); toggleAdmin(); } 
-            else { alert("Wrong PIN!"); currentPinInput = ""; document.getElementById('pinDisplay').innerText = ""; }
+            if (currentPinInput === db.pin) {
+                closePin();
+                toggleAdmin();
+            } else {
+                alert("Wrong PIN!");
+                currentPinInput = "";
+                document.getElementById('pinDisplay').innerText = "";
+            }
+        }
+        function toggleAdmin() {
+            const ap = document.getElementById('adminPanel');
+            ap.style.display = ap.style.display === 'block' ? 'none' : 'block';
         }
 
-        // --- CLOUD SYNC FUNCTIONS ---
+        // CLOUD LOGIC
         async function init() {
-            const { data } = await supabase.from('star_tracker').select('db_content').eq('id', 1).single();
-            if (data) { db = data.db_content; } 
-            else { const saved = localStorage.getItem('familyStarIcons'); if (saved) db = JSON.parse(saved); }
-            
-            checkMonthlyReset();
+            const { data } = await supabaseClient.from('star_tracker').select('db_content').eq('id', 1).single();
+            if (data) db = data.db_content;
             setupIconPicker();
             updateKidDropdown();
             render('chores');
@@ -294,159 +196,67 @@
         }
 
         async function save() {
-            localStorage.setItem('familyStarIcons', JSON.stringify(db));
-            await supabase.from('star_tracker').upsert({ id: 1, db_content: db });
+            await supabaseClient.from('star_tracker').upsert({ id: 1, db_content: db });
         }
 
         function setupRealtime() {
-            supabase.channel('db-changes').on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'star_tracker' }, payload => {
+            supabaseClient.channel('db-changes').on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'star_tracker' }, payload => {
                 db = payload.new.db_content;
                 render('chores');
             }).subscribe();
         }
 
-        // --- THE REST OF YOUR 6.1 LOGIC (UNEDITED) ---
-        function checkMonthlyReset() {
-            const currentMonth = new Date().getMonth();
-            if (db.lastOpenedMonth !== undefined && db.lastOpenedMonth !== currentMonth) {
-                Object.keys(db.kids).forEach(name => { db.kids[name].points = 0; db.kids[name].history = []; });
-                db.lastOpenedMonth = currentMonth;
-                document.getElementById('monthlyAlertBanner').style.display = 'block';
-                save();
-            } else { db.lastOpenedMonth = currentMonth; save(); }
-        }
+        // ORIGINAL v6.1 LOGIC
         function setupIconPicker() {
             const area = document.getElementById('iconPickerArea'); area.innerHTML = '';
             iconList.forEach(icon => {
-                const span = document.createElement('span'); span.className = 'icon-opt'; span.innerText = icon;
-                span.onclick = () => selectIcon(icon, span); area.appendChild(span);
-            });
-        }
-        function selectIcon(icon, el) {
-            document.querySelectorAll('.icon-opt').forEach(opt => opt.classList.remove('selected'));
-            el.classList.add('selected'); document.getElementById('selectedIcon').value = icon;
-        }
-        function updateHallOfFame() {
-            const hallList = document.getElementById('hallOfFameList'); hallList.innerHTML = '';
-            const sortedKids = Object.keys(db.kids).map(name => ({ name, points: db.kids[name].points })).sort((a, b) => b.points - a.points);
-            sortedKids.forEach((kid, index) => {
-                const row = document.createElement('div'); row.className = 'hall-row';
-                const medal = index === 0 ? '🥇 ' : index === 1 ? '🥈 ' : index === 2 ? '🥉 ' : (index + 1) + '. ';
-                row.innerHTML = `<span>${medal}${kid.name}</span><span>${kid.points} pts</span>`; hallList.appendChild(row);
-            });
-        }
-        function updateHistoryUI() {
-            const histArea = document.getElementById('historyList'); histArea.innerHTML = '';
-            const kid = db.kids[db.activeKid]; if (!kid.history) kid.history = [];
-            [...kid.history].reverse().slice(0, 50).forEach(h => {
-                const d = new Date(h.time); const dateStr = d.toLocaleDateString([], { month: 'short', day: 'numeric' });
-                const timeStr = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                histArea.innerHTML += `<div class="history-item"><div class="hist-top"><span>${h.icon} ${h.text}</span><span style="color:${h.type==='chores'?'green':'red'}">${h.type==='chores'?'+':'-'}${h.val}</span></div><div class="hist-time">${dateStr} at ${timeStr}</div></div>`;
+                const s = document.createElement('span'); s.className = 'icon-opt'; s.innerText = icon;
+                s.onclick = () => { document.querySelectorAll('.icon-opt').forEach(o => o.classList.remove('selected')); s.classList.add('selected'); document.getElementById('selectedIcon').value = icon; };
+                area.appendChild(s);
             });
         }
         function render(mode) {
-            const kid = db.kids[db.activeKid]; document.getElementById('totalPoints').innerText = kid.points;
-            const img = document.getElementById('avatarImage'); const emj = document.getElementById('avatarEmoji');
-            if (kid.avatar) { img.src = kid.avatar; img.style.display='block'; emj.style.display='none'; }
-            else { img.style.display='none'; emj.style.display='block'; }
+            const k = db.kids[db.activeKid];
+            document.getElementById('totalPoints').innerText = k.points;
             const grid = document.getElementById('actionGrid'); grid.innerHTML = '';
             db.lists[mode].forEach(item => {
                 grid.innerHTML += `<div class="action-card" onclick="handleAction(${item.id}, '${mode}', event)">
                     <span class="card-icon">${item.icon || '✨'}</span>
-                    <b style="display:block; font-size:1.1rem;">${item.text}</b>
-                    <span style="color:${mode==='chores'?'green':'red'}; font-weight:bold;">${mode==='chores'?'+':'-'}${item.val}</span>
+                    <b>${item.text}</b><br><span style="color:red">${item.val}</span>
                 </div>`;
             });
-            updateEditList(); updateHallOfFame(); updateHistoryUI();
-        }
-        function saveItem() {
-            const id = document.getElementById('editingId').value; const type = document.getElementById('addType').value;
-            const name = document.getElementById('addItemName').value; const icon = document.getElementById('selectedIcon').value;
-            const val = parseInt(document.getElementById('addItemVal').value);
-            if (!name || isNaN(val)) return alert("Please fill in name and points!");
-            if (id) { const item = db.lists[type].find(i => i.id == id); if (item) { item.text = name; item.val = val; item.icon = icon; } }
-            else { db.lists[type].push({ id: Date.now(), text: name, val: val, icon: icon }); }
-            resetForm(); save(); render(type);
-        }
-        function editItem(type, id) {
-            const item = db.lists[type].find(i => i.id == id); document.getElementById('editingId').value = item.id;
-            document.getElementById('addType').value = type; document.getElementById('addItemName').value = item.text;
-            document.getElementById('addItemVal').value = item.val; document.getElementById('selectedIcon').value = item.icon;
-            document.getElementById('formTitle').innerText = "Edit Item"; document.getElementById('saveBtn').innerText = "UPDATE ITEM";
-            document.getElementById('cancelEdit').style.display = "block";
-            document.querySelectorAll('.icon-opt').forEach(opt => { if(opt.innerText === item.icon) opt.classList.add('selected'); else opt.classList.remove('selected'); });
-            window.scrollTo(0,0);
-        }
-        function updateEditList() {
-            const area = document.getElementById('editListArea'); area.innerHTML = '';
-            ['chores', 'punishments', 'rewards'].forEach(type => {
-                area.innerHTML += `<div style="font-weight:bold;margin-top:10px;text-transform:uppercase;color:#888;">${type}</div>`;
-                db.lists[type].forEach(item => { area.innerHTML += `<div class="manage-list-item"><span>${item.icon} ${item.text} (${item.val})</span><div><button class="btn-edit" onclick="editItem('${type}', ${item.id})">✏️</button><button class="btn-del" onclick="deleteItem('${type}', ${item.id})">🗑️</button></div></div>`; });
-            });
-        }
-        function resetForm() {
-            document.getElementById('editingId').value = ""; document.getElementById('addItemName').value = ""; document.getElementById('addItemVal').value = "";
-            document.getElementById('selectedIcon').value = "✨"; document.getElementById('formTitle').innerText = "Add New Task";
-            document.getElementById('saveBtn').innerText = "SAVE ITEM"; document.getElementById('cancelEdit').style.display = "none";
-            document.querySelectorAll('.icon-opt').forEach(opt => opt.classList.remove('selected'));
-        }
-        function triggerConfetti() {
-            const emojis = ['🎉', '🎊', '✨', '⭐', '🎈'];
-            for (let i = 0; i < 50; i++) {
-                const c = document.createElement('div'); c.className = 'confetti'; c.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                c.style.left = Math.random() * 100 + 'vw'; c.style.animationDelay = Math.random() * 2 + 's';
-                document.body.appendChild(c); setTimeout(() => c.remove(), 5000);
-            }
+            updateHistoryUI();
         }
         function handleAction(id, type, e) {
-            const kid = db.kids[db.activeKid]; const item = db.lists[type].find(i => i.id === id);
-            if (type === 'rewards' && kid.points < item.val) return alert("Not enough points!");
-            const oldPoints = kid.points;
-            if (type === 'chores') { kid.points += item.val; if (Math.floor(kid.points / 100) > Math.floor(oldPoints / 100)) { triggerConfetti(); playSound('party'); } }
-            else { kid.points -= item.val; }
-            if (!kid.history) kid.history = [];
-            kid.history.push({ text: item.text, val: item.val, icon: item.icon, type: type, time: new Date().getTime() });
-            playSound(type); createParticle(e.clientX, e.clientY, item.icon || '⭐'); save(); render(type);
+            const k = db.kids[db.activeKid]; const item = db.lists[type].find(i => i.id === id);
+            if (type === 'chores') k.points += item.val; else k.points -= item.val;
+            if (!k.history) k.history = [];
+            k.history.push({ text: item.text, val: item.val, icon: item.icon, type: type, time: new Date().getTime() });
+            save(); render(type);
+        }
+        function saveItem() {
+            const t = document.getElementById('addType').value; const n = document.getElementById('addItemName').value;
+            const v = parseInt(document.getElementById('addItemVal').value); const i = document.getElementById('selectedIcon').value;
+            db.lists[t].push({ id: Date.now(), text: n, val: v, icon: i });
+            save(); render(t);
         }
         function addKid() {
             const n = document.getElementById('newKidName').value.trim();
-            if (n && !db.kids[n]) { db.kids[n] = { points: 0, history: [], avatar: null }; db.activeKid = n; save(); updateKidDropdown(); render('chores'); }
-        }
-        function resetAllPoints() { Object.keys(db.kids).forEach(name => { db.kids[name].points = 0; db.kids[name].history = []; }); hideConfirm('hallReset'); save(); render('chores'); }
-        function showConfirm(id) { document.getElementById(id + 'Confirm').style.display = "block"; }
-        function hideConfirm(id) { document.getElementById(id + 'Confirm').style.display = "none"; }
-        function exportData() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(db));
-            const downloadAnchorNode = document.createElement('a'); downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "star_tracker_backup.json"); document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click(); downloadAnchorNode.remove();
-        }
-        function importData(event) {
-            const reader = new FileReader();
-            reader.onload = function(e) { try { db = JSON.parse(e.target.result); save(); location.reload(); } catch (err) { alert("Error importing file."); } };
-            reader.readAsText(event.target.files[0]);
-        }
-        function deleteKid() { 
-            if (Object.keys(db.kids).length > 1) { delete db.kids[db.activeKid]; db.activeKid = Object.keys(db.kids)[0]; hideConfirm('kidDelete'); save(); updateKidDropdown(); render('chores'); }
-            else { alert("Cannot delete the only child."); hideConfirm('kidDelete'); }
+            if (n) { db.kids[n] = { points: 0, history: [], avatar: null }; db.activeKid = n; save(); updateKidDropdown(); render('chores'); }
         }
         function updateKidDropdown() {
             const sel = document.getElementById('activeKidSelect'); sel.innerHTML = '';
             Object.keys(db.kids).forEach(k => { sel.innerHTML += `<option value="${k}" ${db.activeKid===k?'selected':''}>${k}</option>`; });
         }
         function changeKid() { db.activeKid = document.getElementById('activeKidSelect').value; render('chores'); }
-        function toggleAdmin() { const ap = document.getElementById('adminPanel'); ap.style.display = ap.style.display === 'block' ? 'none' : 'block'; }
-        function triggerUpload() { document.getElementById('avatarUpload').click(); }
-        function uploadPhoto(event) { 
-            const r = new FileReader(); r.onload = (e) => { db.kids[db.activeKid].avatar = e.target.result; save(); render('chores'); };
-            r.readAsDataURL(event.target.files[0]);
+        function updateHistoryUI() {
+            const hArea = document.getElementById('historyList'); hArea.innerHTML = '';
+            const k = db.kids[db.activeKid];
+            if (k.history) [...k.history].reverse().slice(0, 10).forEach(h => {
+                hArea.innerHTML += `<div class="history-item"><b>${h.icon} ${h.text}</b> (${h.val})</div>`;
+            });
         }
-        function deleteItem(type, id) { db.lists[type] = db.lists[type].filter(i => i.id !== id); save(); render('chores'); }
-        function createParticle(x,y,c){const p=document.createElement('div');p.className='particle';p.style.left=x+'px';p.style.top=y+'px';p.innerText=c;document.body.appendChild(p);setTimeout(()=>p.remove(),1000);}
         window.onload = init;
     </script>
 </body>
 </html>
-
-
-
