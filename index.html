@@ -139,15 +139,13 @@
         <div id="historyList" class="history-list"></div>
     </div>
 
-    // 1. This opens the PIN pad when you click the button
-        function openPinModal() {
+    // function openPinModal() {
             currentPinInput = "";
             document.getElementById('pinDisplay').innerText = "";
             document.getElementById('pinModal').style.display = "flex";
         }
 
-        // 2. This checks if the PIN is correct
-        function submitPin() {
+        // function submitPin() {
             if (currentPinInput === db.pin) {
                 closePin();
                 toggleAdmin(); // This only opens the settings IF the pin is right
@@ -158,8 +156,7 @@
             }
         }
 
-        // 3. This actually shows/hides the admin panel
-        function toggleAdmin() { 
+        //    function toggleAdmin() { 
             const ap = document.getElementById('adminPanel'); 
             ap.style.display = ap.style.display === 'block' ? 'none' : 'block'; 
         }
@@ -450,5 +447,6 @@
     </script>
 </body>
 </html>
+
 
 
