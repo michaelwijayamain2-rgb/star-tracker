@@ -125,12 +125,12 @@
 
     <div id="adminPanel" class="admin-panel">
         <div class="admin-section">
-            <h4 id="formTitle">Add Task</h4>
+            <h4 id="formTitle">Add New Task</h4>
             <input type="hidden" id="editingId" value="">
             <select id="addType"><option value="chores">Chore (+)</option><option value="punishments">Oopsie (-)</option><option value="rewards">Reward (Cost)</option></select>
             <div class="icon-picker" id="iconPickerArea"></div>
             <input type="hidden" id="selectedIcon" value="✨">
-            <input type="text" id="addItemName" placeholder="Task Name">
+            <input type="text" id="addItemName" placeholder="Name">
             <input type="number" id="addItemVal" placeholder="Points">
             <button onclick="saveItem()" style="width:100%; background:var(--success); color:white; padding:15px; border-radius:8px; border:none; font-weight:bold;">SAVE</button>
         </div>
@@ -145,7 +145,7 @@
     <script>
         // --- SUPABASE CONFIG ---
         const supabaseUrl = 'https://kyljmfooeekqqcgbiowc.supabase.co';
-        const supabaseKey = 'PASTE_YOUR_COPIED_KEY_HERE'; // <--- PASTE YOUR KEY HERE
+        const supabaseKey = 'sb_publishable_Nhg4Ajdwd_ZXBCQFQ80Ijg_94CPaPMN'; 
         const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
         const iconList = ["✨","🧹","🍽️","🛏️","🧸","📚","🦷","🚿","👕","🐶","🐱","🍎","🥦","🏀","🚲","🎮","📺","🍦","🍭","🎁","🎬","🏖️","🦄","🤖","🦕","🚀","😭","🤥","🖐️","🔇","📢","🚫","💤","⏰"];
@@ -156,7 +156,7 @@
             lists: { chores: [], punishments: [], rewards: [] }
         };
 
-        // PIN SYSTEM
+        // --- FIXED PIN PAD LOGIC ---
         let currentPinInput = "";
         function openPinModal() {
             currentPinInput = "";
@@ -171,21 +171,15 @@
             }
         }
         function submitPin() {
-            if (currentPinInput === db.pin) {
-                closePin();
-                toggleAdmin();
-            } else {
-                alert("Wrong PIN!");
-                currentPinInput = "";
-                document.getElementById('pinDisplay').innerText = "";
-            }
+            if (currentPinInput === db.pin) { closePin(); toggleAdmin(); } 
+            else { alert("Wrong PIN!"); currentPinInput = ""; document.getElementById('pinDisplay').innerText = ""; }
         }
         function toggleAdmin() {
             const ap = document.getElementById('adminPanel');
             ap.style.display = ap.style.display === 'block' ? 'none' : 'block';
         }
 
-        // CLOUD LOGIC
+        // --- CLOUD SYNC ---
         async function init() {
             const { data } = await supabaseClient.from('star_tracker').select('db_content').eq('id', 1).single();
             if (data) db = data.db_content;
@@ -206,7 +200,7 @@
             }).subscribe();
         }
 
-        // ORIGINAL v6.1 LOGIC
+        // --- CORE LOGIC ---
         function setupIconPicker() {
             const area = document.getElementById('iconPickerArea'); area.innerHTML = '';
             iconList.forEach(icon => {
@@ -222,7 +216,7 @@
             db.lists[mode].forEach(item => {
                 grid.innerHTML += `<div class="action-card" onclick="handleAction(${item.id}, '${mode}', event)">
                     <span class="card-icon">${item.icon || '✨'}</span>
-                    <b>${item.text}</b><br><span style="color:red">${item.val}</span>
+                    <b>${item.text}</b><br><span>${item.val}</span>
                 </div>`;
             });
             updateHistoryUI();
