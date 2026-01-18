@@ -139,7 +139,30 @@
         <div id="historyList" class="history-list"></div>
     </div>
 
-    <button onclick="openPinModal()" style="margin-top:30px; border:none; background:none; color:#999; cursor:pointer;">Parent Settings 🔒</button>
+    // 1. This opens the PIN pad when you click the button
+        function openPinModal() {
+            currentPinInput = "";
+            document.getElementById('pinDisplay').innerText = "";
+            document.getElementById('pinModal').style.display = "flex";
+        }
+
+        // 2. This checks if the PIN is correct
+        function submitPin() {
+            if (currentPinInput === db.pin) {
+                closePin();
+                toggleAdmin(); // This only opens the settings IF the pin is right
+            } else {
+                alert("Wrong PIN!");
+                currentPinInput = "";
+                document.getElementById('pinDisplay').innerText = "";
+            }
+        }
+
+        // 3. This actually shows/hides the admin panel
+        function toggleAdmin() { 
+            const ap = document.getElementById('adminPanel'); 
+            ap.style.display = ap.style.display === 'block' ? 'none' : 'block'; 
+        }
 
     <div id="adminPanel" class="admin-panel">
         <div class="admin-section">
@@ -427,4 +450,5 @@
     </script>
 </body>
 </html>
+
 
