@@ -213,18 +213,50 @@
 
         function playSound(type) {
             if (audioCtx.state === 'suspended') audioCtx.resume();
-            
+
+            const now = audioCtx.currentTime;
+
             if (type === 'punishments') {
-                fartSound.currentTime = 0;
-                fartSound.play();
+                // --- DISAPPOINTING "NO LUCK" SYNTH ---
+                
+                // First Note: Short "Wah"
+                const osc1 = audioCtx.createOscillator();
+                const gain1 = audioCtx.createGain();
+                osc1.connect(gain1);
+                gain1.connect(audioCtx.destination);
+                
+                osc1.type = 'sawtooth';
+                osc1.frequency.setValueAtTime(233.08, now); // B-flat note
+                gain1.gain.setValueAtTime(0, now);
+                gain1.gain.linearRampToValueAtTime(0.15, now + 0.05);
+                gain1.gain.linearRampToValueAtTime(0, now + 0.25);
+                
+                // Second Note: Long "Waaaaaah" slide
+                const osc2 = audioCtx.createOscillator();
+                const gain2 = audioCtx.createGain();
+                osc2.connect(gain2);
+                gain2.connect(audioCtx.destination);
+                
+                osc2.type = 'sawtooth';
+                osc2.frequency.setValueAtTime(207.65, now + 0.3); // G-sharp note
+                osc2.frequency.exponentialRampToValueAtTime(110, now + 1.5); // Deep slide down
+                
+                gain2.gain.setValueAtTime(0, now + 0.3);
+                gain2.gain.linearRampToValueAtTime(0.15, now + 0.4);
+                gain2.gain.linearRampToValueAtTime(0, now + 1.5);
+                
+                osc1.start(now);
+                osc1.stop(now + 0.25);
+                osc2.start(now + 0.3);
+                osc2.stop(now + 1.5);
                 return;
             }
 
+            // Standard engine for Chores and Rewards
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.connect(gain);
             gain.connect(audioCtx.destination);
-            const now = audioCtx.currentTime;
 
             if (type === 'chores') {
                 osc.type = 'triangle';
@@ -244,17 +276,17 @@
                 osc.start(now); osc.stop(now + 0.6);
             } else if (type === 'party') {
                 for(let i=0; i<3; i++) {
-                    const partyOsc = audioCtx.createOscillator();
-                    const partyGain = audioCtx.createGain();
-                    partyOsc.connect(partyGain);
-                    partyGain.connect(audioCtx.destination);
-                    partyOsc.type = 'sawtooth';
+                    const pOsc = audioCtx.createOscillator();
+                    const pGain = audioCtx.createGain();
+                    pOsc.connect(pGain);
+                    pGain.connect(audioCtx.destination);
+                    pOsc.type = 'sawtooth';
                     [440, 554, 659, 880].forEach((f, idx) => {
-                        partyOsc.frequency.setValueAtTime(f, now + (i*0.2) + (idx * 0.05));
+                        pOsc.frequency.setValueAtTime(f, now + (i*0.2) + (idx * 0.05));
                     });
-                    partyGain.gain.setValueAtTime(0.1, now + (i*0.2));
-                    partyGain.gain.exponentialRampToValueAtTime(0.01, now + (i*0.2) + 0.3);
-                    partyOsc.start(now + (i*0.2)); partyOsc.stop(now + (i*0.2) + 0.3);
+                    pGain.gain.setValueAtTime(0.1, now + (i*0.2));
+                    pGain.gain.exponentialRampToValueAtTime(0.01, now + (i*0.2) + 0.3);
+                    pOsc.start(now + (i*0.2)); pOsc.stop(now + (i*0.2) + 0.3);
                 }
             }
         }
@@ -541,6 +573,7 @@
     </script>
 </body>
 </html>
+
 
 
 
