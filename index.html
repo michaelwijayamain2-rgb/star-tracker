@@ -318,22 +318,12 @@
         }
 
         function checkMonthlyReset() {
-            // We get the current month
     const currentMonth = new Date().getMonth();
-    
-    // We removed the 'if' statement that resets points and history.
-    // Now, we ONLY update the date record so the database knows the last time you logged in.
     db.lastOpenedMonth = currentMonth;
-    
-    // We save this date update, but your children, chores, and points stay exactly as they are.
     save();
-    
-    // The automatic alert banner is now hidden because no reset occurred.
     document.getElementById('monthlyAlertBanner').style.display = 'none';
-    
-    console.log("Monthly reset skipped. Your data is safe.");
-            
-        }
+    console.log("Monthly check complete. Data preserved.");
+}
 
         function setupIconPicker() {
             const area = document.getElementById('iconPickerArea');
@@ -551,6 +541,7 @@
     </script>
 </body>
 </html>
+
 
 
 
